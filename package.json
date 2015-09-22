@@ -31,5 +31,13 @@
   "devDependencies": {
     "minimist": "1.2.0",
     "mocha": "2.3.3"
+  },
+  "files": {
+    "LICENSE",
+    "README.md",
+    "examples",
+    "index.js",
+    "package.json",
+    "test"
   }
 }
