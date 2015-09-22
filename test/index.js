@@ -156,5 +156,27 @@ describe('minimist-subcommand', function() {
 
 
   context('with minimist', function() {
+
+    it('should be', function() {
+      var schema = {
+        commands: {
+          foo: {
+            commands: {
+              bar: null
+            }
+          }
+        }
+      };
+      var argv = 'foo bar arg1 arg2 -a -b val -c'.split(/ +/);
+      var result = parseCommands(schema, argv);
+      var options = minimist(result.argv);
+
+      assert.deepEqual(options, {
+        _: ['arg1', 'arg2'],
+        a: true,
+        b: 'val',
+        c: true
+      });
+    });
   });
 });
