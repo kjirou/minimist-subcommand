@@ -115,6 +115,46 @@ describe('minimist-subcommand', function() {
   });
 
 
+  context('schema validation', function() {
+
+    it('should be', function() {
+      var schema;
+
+      schema = {
+        default: 1,
+        commands: {
+          foo: null
+        }
+      };
+      assert.throws(function() {
+        parseCommands(schema, []);
+      }, /ValidationError/);
+
+      schema = {
+        commands: {
+          foo: 1
+        }
+      };
+      assert.throws(function() {
+        parseCommands(schema, []);
+      }, /ValidationError/);
+
+      schema = {
+        commands: {
+          foo: {
+            commands: {
+              bar: 1
+            }
+          }
+        }
+      };
+      assert.throws(function() {
+        parseCommands(schema, []);
+      }, /ValidationError/);
+    });
+  });
+
+
   context('with minimist', function() {
   });
 });

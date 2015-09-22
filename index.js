@@ -1,14 +1,38 @@
+var tv4 = require('tv4');
+
+
+var COMMAND_JSON_SCHEMA = {
+  definitions: {
+    commandSchema: {
+      type: 'object',
+      properties: {
+        commands: {
+          type: 'object',
+          patternProperties: {
+            "": {
+              oneOf: [
+                { type: 'null' },
+                { $ref: '#/definitions/commandSchema' },
+              ]
+            }
+          }
+        },
+        default: {
+          type: ['string', 'null']
+        },
+      },
+      required: ['commands']
+    }
+  },
+  $ref: '#/definitions/commandSchema'
+};
+
 module.exports = function parseCommands(schema, argv) {
 
-  // TODO: check schema by json-schema
-  //
-  // {
-  //   default: 'foo',
-  //   commands: {
-  //     foo: { /* schema */ },
-  //     bar: null
-  //   }
-  // }
+  var validated = tv4.validateResult(schema, COMMAND_JSON_SCHEMA);
+  if (validated.valid === false) {
+    throw new Error(validated.error);
+  }
 
   function popCommandRecursively(currentSchema, currentArgv, parsedCommands) {
 
