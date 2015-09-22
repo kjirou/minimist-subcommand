@@ -57,13 +57,13 @@ sub-command: [ 'bar' ]
 parsed options by minimist: { _: [ 'foo' ] }
 ```
 
-### Nested Commands
+### Nested commands
 
-`nested-commands`:
+`nested-commands.js`:
 
 ```js
 var parseArgs = require('minimist');
-var parseCommands = require('../index');
+var parseCommands = require('minimist-subcommand');
 
 // parse sub-commands
 var commandDefinition = {
@@ -100,3 +100,39 @@ $ node ./nested-commands.js singleton child grandchild
 commands: [ 'singleton' ]
 parsed options by minimist: { _: [ 'child', 'grandchild' ] }
 ```
+
+### Use "default" option
+
+`use-default-option.js`:
+
+```js
+var parseArgs = require('minimist');
+var parseCommands = require('minimist-subcommand');
+
+// parse sub-commands
+var commandDefinition = {
+  default: 'bar',
+  commands: {
+    foo: null,
+    bar: null
+  }
+};
+var parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
+
+// pass parsed argv to minimist
+var options = parseArgs(parsedCommandsAndArgv.argv);
+
+console.log('sub-command:', parsedCommandsAndArgv.commands);
+console.log('parsed options by minimist:', options);
+```
+
+```bash
+$ node ./use-default-option.js arg -a
+sub-command: [ 'bar' ]
+parsed options by minimist: { _: [ 'arg' ], a: true }
+```
+
+
+## Command Schema
+
+Please, look at [JSON Schema in source code](https://github.com/kjirou/minimist-subcommand/blob/master/index.js#L4) now.
