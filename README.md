@@ -46,6 +46,7 @@ parsed options by minimist: { _: [ 'arg' ], a: true, b: 'val', c: true }
 ```
 
 ```bash
+$ node ./basic.js arg -a
 sub-command: []
 parsed options by minimist: { _: [ 'arg' ], a: true }
 ```
@@ -54,4 +55,48 @@ parsed options by minimist: { _: [ 'arg' ], a: true }
 $ node ./basic.js bar foo
 sub-command: [ 'bar' ]
 parsed options by minimist: { _: [ 'foo' ] }
+```
+
+### Nested Commands
+
+`nested-commands`:
+
+```js
+var parseArgs = require('minimist');
+var parseCommands = require('../index');
+
+// parse sub-commands
+var commandDefinition = {
+  commands: {
+    singleton: null,
+    married: {
+      commands: {
+        child: {
+          commands: {
+            grandchild: null
+          }
+        }
+      }
+    }
+  }
+};
+var parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
+
+// pass parsed argv to minimist
+var options = parseArgs(parsedCommandsAndArgv.argv);
+
+console.log('commands:', parsedCommandsAndArgv.commands);
+console.log('parsed options by minimist:', options);
+```
+
+```bash
+$ node ./nested-commands.js married child grandchild arg -a
+commands: [ 'married', 'child', 'grandchild' ]
+parsed options by minimist: { _: [ 'arg' ], a: true }
+```
+
+```bash
+$ node ./nested-commands.js singleton child grandchild
+commands: [ 'singleton' ]
+parsed options by minimist: { _: [ 'child', 'grandchild' ] }
 ```
