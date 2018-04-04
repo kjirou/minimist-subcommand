@@ -1,7 +1,9 @@
 var assert = require('assert');
 var minimist = require('minimist');
+var tv4 = require('tv4');
 
 var parseCommands = require('../index');
+var COMMAND_JSON_SCHEMA = parseCommands.COMMAND_JSON_SCHEMA;
 
 
 describe('minimist-subcommand', function() {
@@ -115,9 +117,9 @@ describe('minimist-subcommand', function() {
   });
 
 
-  context('schema validation', function() {
+  context('COMMAND_JSON_SCHEMA', function() {
 
-    it('should be', function() {
+    it('can be used for JSON Schema', function() {
       var schema;
 
       schema = {
@@ -126,18 +128,14 @@ describe('minimist-subcommand', function() {
           foo: null
         }
       };
-      assert.throws(function() {
-        parseCommands(schema, []);
-      }, /ValidationError/);
+      assert.strictEqual(tv4.validateResult(schema, COMMAND_JSON_SCHEMA).valid, false);
 
       schema = {
         commands: {
           foo: 1
         }
       };
-      assert.throws(function() {
-        parseCommands(schema, []);
-      }, /ValidationError/);
+      assert.strictEqual(tv4.validateResult(schema, COMMAND_JSON_SCHEMA).valid, false);
 
       schema = {
         commands: {
@@ -148,9 +146,7 @@ describe('minimist-subcommand', function() {
           }
         }
       };
-      assert.throws(function() {
-        parseCommands(schema, []);
-      }, /ValidationError/);
+      assert.strictEqual(tv4.validateResult(schema, COMMAND_JSON_SCHEMA).valid, false);
     });
   });
 

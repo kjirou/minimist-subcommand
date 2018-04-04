@@ -1,6 +1,3 @@
-var tv4 = require('tv4');
-
-
 var COMMAND_JSON_SCHEMA = {
   definitions: {
     commandSchema: {
@@ -27,13 +24,7 @@ var COMMAND_JSON_SCHEMA = {
   $ref: '#/definitions/commandSchema'
 };
 
-module.exports = function parseCommands(schema, argv) {
-
-  var validated = tv4.validateResult(schema, COMMAND_JSON_SCHEMA);
-  if (validated.valid === false) {
-    throw new Error(validated.error);
-  }
-
+function parseCommands(schema, argv) {
   function popCommandRecursively(currentSchema, currentArgv, parsedCommands) {
 
     if (currentSchema === null) {
@@ -80,3 +71,7 @@ module.exports = function parseCommands(schema, argv) {
     argv: result.argv
   };
 };
+
+parseCommands.COMMAND_JSON_SCHEMA = COMMAND_JSON_SCHEMA;
+
+module.exports = parseCommands;
