@@ -133,6 +133,20 @@ parsed options by minimist: { _: [ 'arg' ], a: true }
 ```
 
 
-## Command Schema
+## Command's Schema
 
-Please, look at [JSON Schema in source code](https://github.com/kjirou/minimist-subcommand/blob/master/index.js#L4) now.
+If you want to check schema of `commandDefinition`, please use `COMMAND_JSON_SCHEMA`.
+
+```js
+var COMMAND_JSON_SCHEMA = require('minimist-subcommand').COMMAND_JSON_SCHEMA;
+
+var commandDefinition = {
+  commands: {
+    foo: null,
+    bar: null
+  }
+};
+
+// I will leave it to the judgment of the user.
+someJsonSchemaLibrary.validate(COMMAND_JSON_SCHEMA, commandDefinition);
+```
