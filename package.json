@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/kjirou/minimist-subcommand#readme",
   "engines": {
-    "node": ">=0.10"
+    "node": ">=6",
+    "npm": ">=3"
   },
   "dependencies": {
     "tv4": "1.2.7"

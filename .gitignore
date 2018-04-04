@@ -34,5 +34,6 @@ pip-log.txt
 testem.*.*.*.json
 
 
+/package-lock.json
 /tmp/*.*
 aws-config.json
