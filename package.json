@@ -4,7 +4,7 @@
   "description": "A simple sub-command parser for minimist",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "$(npm bin)/mocha --require './setup/ts-node-reigister-for-test.js'"
   },
   "repository": {
     "type": "git",

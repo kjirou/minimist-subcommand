@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "jsx": "preserve",
+    "module": "CommonJs",
+    "newLine": "LF",
+    "target": "ES5",
+    /* Strict Type-Checking Options */
+    "strict": true,
+    /* Additional Checks */
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
+}
