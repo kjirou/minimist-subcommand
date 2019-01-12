@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/kjirou/minimist-subcommand#readme",
   "engines": {
-    "node": ">=8",
-    "npm": ">=5"
+    "node": ">=6",
+    "npm": ">=3"
   },
   "dependencies": {},
   "devDependencies": {
