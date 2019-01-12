@@ -6,9 +6,7 @@ import * as tv4 from 'tv4';
 import * as parseCommands from '../index';
 const COMMAND_JSON_SCHEMA = parseCommands.COMMAND_JSON_SCHEMA;
 
-
 describe('minimist-subcommand', function() {
-
   it('should parse argv by simple schema', function() {
     const schema = {
       commands: {
@@ -117,9 +115,7 @@ describe('minimist-subcommand', function() {
     }, /baz/);
   });
 
-
   describe('COMMAND_JSON_SCHEMA', function() {
-
     it('can be used for JSON Schema', function() {
       let schema;
 
@@ -151,9 +147,7 @@ describe('minimist-subcommand', function() {
     });
   });
 
-
   describe('with minimist', function() {
-
     it('should be', function() {
       const schema = {
         commands: {
