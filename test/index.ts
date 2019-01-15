@@ -3,8 +3,7 @@ import * as minimist from 'minimist';
 import {describe, it} from 'mocha';
 import * as tv4 from 'tv4';
 
-import * as parseCommands from '../index';
-const COMMAND_JSON_SCHEMA = parseCommands.COMMAND_JSON_SCHEMA;
+import parseCommands, {COMMAND_JSON_SCHEMA} from '../src/index';
 
 describe('minimist-subcommand', function() {
   it('should parse argv by simple schema', function() {
