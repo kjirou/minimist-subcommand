@@ -8,8 +8,8 @@ A simple sub-command parser for [minimist](https://www.npmjs.com/package/minimis
 
 ## Installation
 
-```
-npm install --save minimist-subcommand
+```bash
+npm install minimist-subcommand
 ```
 
 
