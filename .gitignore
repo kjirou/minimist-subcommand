@@ -34,5 +34,4 @@ pip-log.txt
 testem.*.*.*.json
 
 
-/tmp/*.*
-aws-config.json
+/dist/

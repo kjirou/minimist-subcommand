@@ -1,15 +1,13 @@
-var assert = require('assert');
-var minimist = require('minimist');
-var tv4 = require('tv4');
+import * as assert from 'assert';
+import * as minimist from 'minimist';
+import {describe, it} from 'mocha';
+import * as tv4 from 'tv4';
 
-var parseCommands = require('../index');
-var COMMAND_JSON_SCHEMA = parseCommands.COMMAND_JSON_SCHEMA;
-
+import parseCommands, {COMMAND_JSON_SCHEMA} from '../src/index';
 
 describe('minimist-subcommand', function() {
-
   it('should parse argv by simple schema', function() {
-    var schema = {
+    const schema = {
       commands: {
         foo: null,
         bar: null
@@ -35,7 +33,7 @@ describe('minimist-subcommand', function() {
   });
 
   it('should parse argv by nested schema', function() {
-    var schema = {
+    const schema = {
       commands: {
         foo: {
           commands: {
@@ -80,7 +78,7 @@ describe('minimist-subcommand', function() {
   });
 
   it('should be enabled the default option', function() {
-    var schema = {
+    const schema = {
       default: 'foo',
       commands: {
         foo: null,
@@ -103,7 +101,7 @@ describe('minimist-subcommand', function() {
   });
 
   it('should throw error by invalid default option', function() {
-    var schema = {
+    const schema = {
       default: 'baz',
       commands: {
         foo: null,
@@ -116,11 +114,9 @@ describe('minimist-subcommand', function() {
     }, /baz/);
   });
 
-
-  context('COMMAND_JSON_SCHEMA', function() {
-
+  describe('COMMAND_JSON_SCHEMA', function() {
     it('can be used for JSON Schema', function() {
-      var schema;
+      let schema;
 
       schema = {
         default: 1,
@@ -150,11 +146,9 @@ describe('minimist-subcommand', function() {
     });
   });
 
-
-  context('with minimist', function() {
-
+  describe('with minimist', function() {
     it('should be', function() {
-      var schema = {
+      const schema = {
         commands: {
           foo: {
             commands: {
@@ -163,9 +157,9 @@ describe('minimist-subcommand', function() {
           }
         }
       };
-      var argv = 'foo bar arg1 arg2 -a -b val -c'.split(/ +/);
-      var result = parseCommands(schema, argv);
-      var options = minimist(result.argv);
+      const argv = 'foo bar arg1 arg2 -a -b val -c'.split(/ +/);
+      const result = parseCommands(schema, argv);
+      const options = minimist(result.argv);
 
       assert.deepEqual(options, {
         _: ['arg1', 'arg2'],
