@@ -21,7 +21,7 @@ npm install minimist-subcommand
 
 ```js
 var parseArgs = require('minimist');
-var parseCommands = require('minimist-subcommand');
+var {parseCommands} = require('minimist-subcommand');
 
 // parse sub-commands
 var commandDefinition = {
@@ -63,7 +63,7 @@ parsed options by minimist: { _: [ 'foo' ] }
 
 ```js
 var parseArgs = require('minimist');
-var parseCommands = require('minimist-subcommand');
+var {parseCommands} = require('minimist-subcommand');
 
 // parse sub-commands
 var commandDefinition = {
@@ -107,7 +107,7 @@ parsed options by minimist: { _: [ 'child', 'grandchild' ] }
 
 ```js
 var parseArgs = require('minimist');
-var parseCommands = require('minimist-subcommand');
+var {parseCommands} = require('minimist-subcommand');
 
 // parse sub-commands
 var commandDefinition = {

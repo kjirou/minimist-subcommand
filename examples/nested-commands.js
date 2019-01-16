@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var parseArgs = require('minimist');
-var parseCommands = require('../index');
+var {parseCommands} = require('../dist/index');
 
 // parse sub-commands
 var commandDefinition = {

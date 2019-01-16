@@ -31,7 +31,7 @@ export type CommandSchema = {
   default?: string | null,
 };
 
-export default function parseCommands(schema: CommandSchema, argv: string[]): {
+export function parseCommands(schema: CommandSchema, argv: string[]): {
   commands: string[],
   argv: string[],
 } {
