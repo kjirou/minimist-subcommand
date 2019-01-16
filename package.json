@@ -1,6 +1,6 @@
 {
   "name": "minimist-subcommand",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A simple sub-command parser for minimist",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
