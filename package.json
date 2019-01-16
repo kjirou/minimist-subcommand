@@ -44,6 +44,7 @@
   "files": [
     "LICENSE",
     "README.md",
+    "dist",
     "examples",
     "index.js",
     "package.json",
