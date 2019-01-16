@@ -2,7 +2,7 @@
   "name": "minimist-subcommand",
   "version": "3.0.0",
   "description": "A simple sub-command parser for minimist",
-  "main": "index.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "$(npm bin)/tsc --project ./tsconfigs/build.json",
