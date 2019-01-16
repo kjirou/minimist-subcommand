@@ -20,20 +20,20 @@ npm install minimist-subcommand
 `basic.js`:
 
 ```js
-var parseArgs = require('minimist');
-var {parseCommands} = require('minimist-subcommand');
+const parseArgs = require('minimist');
+const {parseCommands} = require('minimist-subcommand');
 
 // parse sub-commands
-var commandDefinition = {
+const commandDefinition = {
   commands: {
     foo: null,
     bar: null
   }
 };
-var parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
+const parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
 
 // pass parsed argv to minimist
-var options = parseArgs(parsedCommandsAndArgv.argv);
+const options = parseArgs(parsedCommandsAndArgv.argv);
 
 console.log('sub-command:', parsedCommandsAndArgv.commands);
 console.log('parsed options by minimist:', options);
@@ -62,11 +62,11 @@ parsed options by minimist: { _: [ 'foo' ] }
 `nested-commands.js`:
 
 ```js
-var parseArgs = require('minimist');
-var {parseCommands} = require('minimist-subcommand');
+const parseArgs = require('minimist');
+const {parseCommands} = require('minimist-subcommand');
 
 // parse sub-commands
-var commandDefinition = {
+const commandDefinition = {
   commands: {
     singleton: null,
     married: {
@@ -80,10 +80,10 @@ var commandDefinition = {
     }
   }
 };
-var parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
+const parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
 
 // pass parsed argv to minimist
-var options = parseArgs(parsedCommandsAndArgv.argv);
+const options = parseArgs(parsedCommandsAndArgv.argv);
 
 console.log('commands:', parsedCommandsAndArgv.commands);
 console.log('parsed options by minimist:', options);
@@ -106,21 +106,21 @@ parsed options by minimist: { _: [ 'child', 'grandchild' ] }
 `use-default-option.js`:
 
 ```js
-var parseArgs = require('minimist');
-var {parseCommands} = require('minimist-subcommand');
+const parseArgs = require('minimist');
+const {parseCommands} = require('minimist-subcommand');
 
 // parse sub-commands
-var commandDefinition = {
+const commandDefinition = {
   default: 'bar',
   commands: {
     foo: null,
     bar: null
   }
 };
-var parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
+const parsedCommandsAndArgv = parseCommands(commandDefinition, process.argv.slice(2));
 
 // pass parsed argv to minimist
-var options = parseArgs(parsedCommandsAndArgv.argv);
+const options = parseArgs(parsedCommandsAndArgv.argv);
 
 console.log('sub-command:', parsedCommandsAndArgv.commands);
 console.log('parsed options by minimist:', options);
@@ -138,9 +138,9 @@ parsed options by minimist: { _: [ 'arg' ], a: true }
 If you want to check schema of `commandDefinition`, please use `COMMAND_JSON_SCHEMA`.
 
 ```js
-var COMMAND_JSON_SCHEMA = require('minimist-subcommand').COMMAND_JSON_SCHEMA;
+const COMMAND_JSON_SCHEMA = require('minimist-subcommand').COMMAND_JSON_SCHEMA;
 
-var commandDefinition = {
+const commandDefinition = {
   commands: {
     foo: null,
     bar: null
