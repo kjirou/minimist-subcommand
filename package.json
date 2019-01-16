@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "A simple sub-command parser for minimist",
   "main": "index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "$(npm bin)/tsc --project ./tsconfigs/build.json",
     "build-and-publish": "rm -r ./dist && npm run build && npm publish",
